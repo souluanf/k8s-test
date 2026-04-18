@@ -18,6 +18,9 @@ spec:
           image: ghcr.io/souluanf/k8s-test:latest
           ports:
             - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: k8s-test-secrets
           readinessProbe:
             httpGet:
               path: /actuator/health
