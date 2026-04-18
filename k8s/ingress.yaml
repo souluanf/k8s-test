@@ -5,6 +5,7 @@ metadata:
   namespace: k8s-test
 spec:
   entryPoints:
+    - web
     - websecure
   routes:
     - match: Host(`k8s-test.souluanf.dev`)
