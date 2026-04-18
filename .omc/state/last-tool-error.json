@@ -1,7 +1,0 @@
-{
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"git remote add origin https://github.com/souluanf/k8s-test.git && git commit -m \\\"feat: ✨ Estrutura inicial do projeto de teste k3s\\\" && git push -u origin main\",\"description\":\"Commit and ...",
-  "error": "Exit code 128\n[main (root-commit) 5bb4389] feat: ✨ Estrutura inicial do projeto de teste k3s\n 11 files changed, 204 insertions(+)\n create mode 100644 .github/workflows/deploy.yml\n create mode 100644 .gitignore\n create mode 100644 Dockerfile\n create mode 100644 k8s/deployment.yaml\n create mode 100644 k8s/ingress.yaml\n create mode 100644 k8s/namespace.yaml\n create mode 100644 k8s/service.yaml\n create mode 100644 pom.xml\n create mode 100644 src/main/java/dev/souluanf/k8stest/K8sTestApplication.java...",
-  "timestamp": "2026-04-18T02:01:06.071Z",
-  "retry_count": 1
-}
