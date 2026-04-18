@@ -42,6 +42,15 @@ jobs:
           push: true
           tags: ${{ env.IMAGE }}:latest,${{ env.IMAGE }}:${{ github.sha }}
 
+      - name: Copy manifests to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.DROPLET_HOST }}
+          username: ${{ secrets.DROPLET_USER }}
+          key: ${{ secrets.DROPLET_SSH_KEY }}
+          source: "k8s/"
+          target: "/tmp/k8s-test"
+
       - name: Deploy to k3s
         uses: appleboy/ssh-action@v1
         with:
@@ -49,8 +58,5 @@ jobs:
           username: ${{ secrets.DROPLET_USER }}
           key: ${{ secrets.DROPLET_SSH_KEY }}
           script: |
-            kubectl apply -f https://raw.githubusercontent.com/souluanf/k8s-test/main/k8s/namespace.yaml
-            kubectl apply -f https://raw.githubusercontent.com/souluanf/k8s-test/main/k8s/deployment.yaml
-            kubectl apply -f https://raw.githubusercontent.com/souluanf/k8s-test/main/k8s/service.yaml
-            kubectl apply -f https://raw.githubusercontent.com/souluanf/k8s-test/main/k8s/ingress.yaml
+            kubectl apply -f /tmp/k8s-test/k8s/
             kubectl rollout restart deployment/k8s-test -n k8s-test
