@@ -9,8 +9,8 @@ import java.util.Map;
 @RestController
 public class HelloController {
 
-    @Value("${APP_MESSAGE:k8s-test running on k3s}")
-    private String appMessage;
+    // @Value("${APP_MESSAGE:k8s-test running on k3s}")
+    private String appMessage = "Heimy, eu te amo!";
 
     @GetMapping("/hello")
     public Map<String, String> hello() {
